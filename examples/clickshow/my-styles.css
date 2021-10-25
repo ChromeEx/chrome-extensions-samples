@@ -1,12 +1,3 @@
-body {
-    background: #786ff0;
-}
-
-.title { 
-    font: 3em Arial;
-    color:#fff;
-}
-
 .ripple {
     width: 10px;
     height: 10px;

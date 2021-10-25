@@ -1,10 +1,7 @@
-document.body.style.backgroundColor = 'orange';
-
-document.addEventListener('dblclick', () => {console.log('bbbb');});
-document.addEventListener('mousedown', applyCursorRippleEffect);
+document.addEventListener('click', applyCursorRippleEffect);
 
 function applyCursorRippleEffect(e) {
-    console.log('dddd');
+    e.preventDefault();
     const ripple = document.createElement("div");
     ripple.className = "ripple";
     document.body.appendChild(ripple);
@@ -17,7 +14,7 @@ function applyCursorRippleEffect(e) {
 }
 
 // extra and optional part:
-const all = document.body.getElementsByTagName("*");
-for (var i = 0; i < all.length; ++i) {
-    all[i].onclick = (event) => event.stopPropagation();
-}
+// const all = document.body.getElementsByTagName("*");
+// for (var i = 0; i < all.length; ++i) {
+//     all[i].onclick = (event) => event.stopPropagation();
+// }
