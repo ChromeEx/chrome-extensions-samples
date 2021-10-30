@@ -1,20 +1,23 @@
-document.addEventListener('click', applyCursorRippleEffect);
+document.addEventListener('dblclick', addInputText);
 
 function applyCursorRippleEffect(e) {
-    e.preventDefault();
-    const ripple = document.createElement("div");
-    ripple.className = "ripple";
-    document.body.appendChild(ripple);
-    ripple.style.left = `${e.clientX}px`;
-    ripple.style.top = `${e.clientY}px`;
-    ripple.style.animation = `ripple-effect .4s  linear`;
-    ripple.onanimationend = () => {
-        document.body.removeChild(ripple);
-    }
+    const img = document.createElement("img");
+    img.className = "image-show";
+    document.body.appendChild(img);
+    img.style.left = `${e.clientX}px`;
+    img.style.top = `${e.clientY}px`;
+    img.src = chrome.runtime.getURL("images/bobo1.gif");
+    setTimeout(() => {
+        document.body.removeChild(img);
+    }, 2000)
 }
 
-// extra and optional part:
-// const all = document.body.getElementsByTagName("*");
-// for (var i = 0; i < all.length; ++i) {
-//     all[i].onclick = (event) => event.stopPropagation();
-// }
+function addInputText(e) {
+    const input = document.createElement("text");
+    input.type = "text";
+    input.className = "click-show-text"
+    document.body.appendChild(input);
+    input.style.position = "fixed";
+    input.style.left = `${e.clientX}px`;
+    input.style.top = `${e.clientY}px`;
+}
