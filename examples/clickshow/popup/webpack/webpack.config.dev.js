@@ -3,7 +3,7 @@ const Webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -17,6 +17,9 @@ module.exports = merge(common, {
     inline: true,
     hot: true,
   },
+  entry: [
+    './src/styles/index.scss'
+  ],
   plugins: [
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
@@ -32,6 +35,9 @@ module.exports = merge(common, {
     new ESLintPlugin({
       emitWarning: true,
     }),
+    new MiniCssExtractPlugin({
+      filename: 'bundle.css',
+    }),
   ],
   module: {
     rules: [
@@ -45,19 +51,23 @@ module.exports = merge(common, {
         loader: 'babel-loader',
       },
       {
-        test: /\.s?css$/i,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          'postcss-loader',
-          'sass-loader',
-        ],
+        test: /\.s?css/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
     ],
   },
 });
+// {
+//   test: /\.s?css$/i,
+//   use: [
+//     'style-loader',
+//     {
+//       loader: 'css-loader',
+//       options: {
+//         sourceMap: true,
+//       },
+//     },
+//     'postcss-loader',
+//     'sass-loader',
+//   ],
+// },

@@ -1,0 +1,11 @@
+
+.image-show {
+    position: fixed;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform:scale(15);
+        opacity: 0.01;
+    }
+}

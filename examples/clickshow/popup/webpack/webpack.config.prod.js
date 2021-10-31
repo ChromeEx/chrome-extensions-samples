@@ -9,13 +9,14 @@ module.exports = merge(common, {
   devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
+  entry: {
+    app: [Path.resolve(__dirname, '../src/scripts/index.js'), './src/styles/index.scss'],
+    vendor: Path.resolve(__dirname, '../src/scripts/bootstrap.bundle.min.js')
+  },
   output: {
     filename: 'js/[name].[chunkhash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
   },
-  entry: [
-    './src/styles/index.scss'
-  ],
   plugins: [
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -26,15 +27,10 @@ module.exports = merge(common, {
   ],
   module: {
     rules: [
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   use: 'babel-loader',
-      // },
       {
         test: /\.js$/,
-        include: Path.resolve(__dirname, '../src'),
-        loader: 'babel-loader',
+        exclude: /node_modules/,
+        use: 'babel-loader',
       },
       {
         test: /\.s?css/i,
@@ -43,3 +39,8 @@ module.exports = merge(common, {
     ],
   },
 });
+// {
+//   test: /\.js$/,
+//   include: Path.resolve(__dirname, '../src'),
+//   loader: 'babel-loader',
+// },
