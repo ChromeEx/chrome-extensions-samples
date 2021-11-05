@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- https://getbootstrap.com/docs/5.0/components/navs-tabs/ -->
 <html lang="en">
 
 <head>
@@ -22,13 +21,50 @@
           aria-controls="profile" aria-selected="false">Text</button>
       </li>
       <li class="nav-item" role="presentation">
+        <button class="nav-link" id="mouse-tab" data-bs-toggle="tab" data-bs-target="#mouse" type="button" role="tab"
+          aria-controls="mouse" aria-selected="false">Mouse</button>
+      </li>
+      <li class="nav-item" role="presentation">
         <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab"
           aria-controls="contact" aria-selected="false">Image</button>
       </li>
     </ul>
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="popup-body-content">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="setting-tab">Setting</div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="text-tab">Text</div>
+      <div class="tab-pane fade" id="mouse" role="tabpanel" aria-labelledby="mouse-tab">
+        <div id="form-edit-mouse">
+          <label class="setting-title">Event click</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="click-effect-setting" value="click-option" id="click-effect-setting-click" checked>
+            <label class="form-check-label" for="click-effect-setting-click">
+              Click
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="click-effect-setting" value="shift-option" id="click-effect-setting-shift">
+            <label class="form-check-label" for="click-effect-setting-shift">
+              Shift + Click
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="click-effect-setting" value="ctr-option" id="click-effect-setting-ctr">
+            <label class="form-check-label" for="click-effect-setting-ctr">
+              Ctr + Click
+            </label>
+          </div>
+          <label class="setting-title">Which color do you want to apply?</label>
+          <div class="input-group mb-3">
+            <input id="input-color" type="text" class="form-control" placeholder="#000000" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <div class="square-color" id="square-color"></div>
+          </div>
+          <div class="form-group row action-content">
+            <div class="col-sm-10">
+              <button class="btn btn-primary" id="mouse-apply">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="image-tab">Image</div>
     </div>
   </div>

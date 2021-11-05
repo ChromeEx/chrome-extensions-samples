@@ -5,3 +5,33 @@
 .main-content {
   min-width: 400px;
 }
+
+#popup-body-content {
+  padding: 20px;
+}
+
+.setting-title {
+  padding: 10px;
+}
+
+.action-content {
+  text-align: left;
+}
+
+.square-color {
+  width: 40px;
+  height: 40px;
+  border: 1px solid grey;
+}
+
+.input-group {
+  justify-content: space-between;
+}
+
+input#input-color {
+  flex: 0.9;
+}
+
+#form-edit-mouse.input-group {
+  justify-content: space-between;
+}

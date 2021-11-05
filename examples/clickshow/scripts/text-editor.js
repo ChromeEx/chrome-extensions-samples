@@ -42,7 +42,6 @@ function createInputText(e) {
 }
 
 function elementDrag(e) {
-    e.stopPropagation();
     if(dragging === false) {
         dragging = true;
         currentTextPosition.x = e.clientX;
@@ -50,15 +49,16 @@ function elementDrag(e) {
     }
     rootEl.parentNode.onmousemove = elementMove;
     rootEl.parentNode.onmouseup = elementEndDrag;
+    e.stopPropagation();
+    e.preventDefault();
 }
 
 function elementMove(e) {
-    const input = e.target.parentNode;
     const deltaX = e.clientX - currentTextPosition.x;
     const deltaY = e.clientY - currentTextPosition.y;
 
-    input.style.top = `${input.offsetTop + deltaY}px`;
-    input.style.left = `${input.offsetLeft  + deltaX}px`;
+    rootEl.style.top = `${rootEl.offsetTop + deltaY}px`;
+    rootEl.style.left = `${rootEl.offsetLeft  + deltaX}px`;
     currentTextPosition.x = e.clientX;
     currentTextPosition.y = e.clientY;
 }
